@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "n+Tq8nUaYhIScK4kVAWjsG08PSxsTMWIycuKXmGFw0It/yPVYvQTOw/UTAT4PdQuyVdiBQ/96m9u2JUYtvVP9g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\interns.prague\\source\\repos\\KeyGenerater\\KeyGenerater\\KeyGenerater.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\interns.prague\\.nuget\\packages\\system.codedom\\7.0.0\\system.codedom.7.0.0.nupkg.sha512",
+    "C:\\Users\\interns.prague\\.nuget\\packages\\system.management\\7.0.1\\system.management.7.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
