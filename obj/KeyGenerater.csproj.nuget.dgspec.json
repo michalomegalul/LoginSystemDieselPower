@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\interns.prague\\source\\repos\\KeyGenerater\\KeyGenerater\\KeyGenerater.csproj": {}
+    "C:\\Users\\interns.prague\\source\\repos\\SYS_log\\KeyGenerater\\KeyGenerater\\KeyGenerater.csproj": {}
   },
   "projects": {
-    "C:\\Users\\interns.prague\\source\\repos\\KeyGenerater\\KeyGenerater\\KeyGenerater.csproj": {
+    "C:\\Users\\interns.prague\\source\\repos\\SYS_log\\KeyGenerater\\KeyGenerater\\KeyGenerater.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\interns.prague\\source\\repos\\KeyGenerater\\KeyGenerater\\KeyGenerater.csproj",
+        "projectUniqueName": "C:\\Users\\interns.prague\\source\\repos\\SYS_log\\KeyGenerater\\KeyGenerater\\KeyGenerater.csproj",
         "projectName": "KeyGenerater",
-        "projectPath": "C:\\Users\\interns.prague\\source\\repos\\KeyGenerater\\KeyGenerater\\KeyGenerater.csproj",
+        "projectPath": "C:\\Users\\interns.prague\\source\\repos\\SYS_log\\KeyGenerater\\KeyGenerater\\KeyGenerater.csproj",
         "packagesPath": "C:\\Users\\interns.prague\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\interns.prague\\source\\repos\\KeyGenerater\\KeyGenerater\\obj\\",
+        "outputPath": "C:\\Users\\interns.prague\\source\\repos\\SYS_log\\KeyGenerater\\KeyGenerater\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,6 +44,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "OpenQA.Selenium.Winium": {
+              "target": "Package",
+              "version": "[1.0.0.4, )"
+            },
             "System.Management": {
               "target": "Package",
               "version": "[7.0.1, )"

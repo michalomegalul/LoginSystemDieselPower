@@ -1,63 +1,21 @@
 ﻿using System;
-using System.Security.Cryptography;
-using System.Text;
+using System.IO.Pipes;
 using System.Management;
-
-
-public class SubscriptionKey
-{
-    private const string SecretKey = "A6rUKknreJx!4PFRTEx$jJ7FBtahCnR4M4EaxZMq-Hs++=Q+CT4eB+VT#TJEsN-D&c+f";
-
-    public static string GenerateKey(string hardwareId)
-    {
-        var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-        var data = $"{hardwareId}|{timestamp}";
-        var signature = SignData(data, SecretKey);
-
-        return $"{data}|{signature}";
-    }
-
-    public static bool ValidateKey(string key, string hardwareId, TimeSpan subscriptionDuration)
-    {
-        var parts = key.Split('|');
-        if (parts.Length != 3)
-        {
-            return false;
-        }
-
-        var timestamp = long.Parse(parts[1]);
-        var subscriptionEndDate = DateTimeOffset.FromUnixTimeSeconds(timestamp).Add(subscriptionDuration);
-        if (subscriptionEndDate < DateTimeOffset.UtcNow)
-        {
-            return false;
-        }
-
-        var data = $"{hardwareId}|{timestamp}";
-        var signature = parts[2];
-        var expectedSignature = SignData(data, SecretKey);
-
-        return signature == expectedSignature;
-    }
-
-    private static string SignData(string data, string secretKey)
-    {
-        using var hmac = new HMACSHA256(Encoding.UTF8.GetBytes(secretKey));
-        var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(data));
-        return Convert.ToHexString(hash);
-    }
-}
-
+using System.Text;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 public class Program
 {
-    public static void Main()
+    public static async Task Main()
     {
+        await UserManagment.Pipse();
         var hardwareId = GetMotherboardId();
-        var subscriptionDuration = TimeSpan.FromDays(30);
+        var subscriptionDuration = TimeSpan.FromDays(30); //How long the subscription is valid for
 
         var key = SubscriptionKey.GenerateKey(hardwareId);
         Console.WriteLine($"Generated Key: {key}");
 
-        var isValid = SubscriptionKey.ValidateKey(key, hardwareId, subscriptionDuration);
+        var isValid = SubscriptionKey.ValidateKey(key, hardwareId, subscriptionDuration); //Validate the key
         Console.WriteLine($"Key is {(isValid ? "Valid" : "Invalid")}");
     }
     public static string GetMotherboardId()
@@ -78,4 +36,55 @@ public class Program
         }
         return result;
     }
+    public static string GetPCName()
+    {
+        string result = string.Empty;
+        try
+        {
+            var mos = new ManagementObjectSearcher("Select * FROM Win32_ComputerSystem");
+            foreach (var mo in mos.Get())
+            {
+                result = mo["Name"].ToString();
+                break;
+            }
+        }
+        catch
+        {
+            result = string.Empty;
+        }
+        return result;
+    }
+}
+
+public class UserManagment
+{
+    public static async Task Pipse()
+    {
+        using (var server = new NamedPipeServerStream("MyNamedPipe"))
+        {
+            Console.WriteLine("Waiting for connection...");
+            await server.WaitForConnectionAsync();
+            Console.WriteLine("Connected!");
+
+            var buffer = new byte[4096];
+            var bytesRead = await server.ReadAsync(buffer, 0, buffer.Length);
+            var requestData = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+
+            Console.WriteLine($"Received data: {requestData}");
+
+            // Process the received data as needed
+
+            // Send response if required
+            var responseData = "Response from C#";
+            var responseBytes = Encoding.UTF8.GetBytes(responseData);
+            await server.WriteAsync(responseBytes, 0, responseBytes.Length);
+        }
+    }
+}
+public class User
+{
+    public string Desktop_Name { get; set; } = Program.GetPCName();
+    public string Motherboard_ID { get; set; } = Program.GetMotherboardId();
+
+
 }
