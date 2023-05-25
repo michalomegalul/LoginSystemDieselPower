@@ -2,8 +2,7 @@
 using System.IO.Pipes;
 using System.Management;
 using System.Text;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+
 public class Program
 {
     public static async Task Main()
