@@ -39,6 +39,31 @@ window.addEventListener("DOMContentLoaded", function() {
   
     // Example of adding a new row dynamically
     addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
+    addRow("John Doe", "Authorized", "May 25, 2023", "May 30, 2023");
   });
   function sendDataToCSharp(data) {
     fetch('MyNamedPipe', {

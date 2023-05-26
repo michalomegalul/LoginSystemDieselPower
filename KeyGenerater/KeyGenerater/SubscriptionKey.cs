@@ -3,7 +3,7 @@ using System.Text;
 
 public class SubscriptionKey
 {
-    private const string SecretKey = "A6rUKknreJx!4PFRTEx$jJ7FBtahCnR4M4EaxZMq-Hs++=Q+CT4eB+VT#TJEsN-D&c+f";
+    private const string SecretKey =          ";
 
     public static string GenerateKey(string hardwareId)
     {
