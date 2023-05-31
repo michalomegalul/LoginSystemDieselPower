@@ -1,6 +1,9 @@
-using BlazorApp1.Data;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using BlazorApp1.Data;
+using BlazorApp1.Webside;
+using BlazorApp1.Userside;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,24 +11,20 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
+builder.Services.AddSingleton<SubscriptionKey>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
-
-app.UseHttpsRedirection();
-
 app.UseStaticFiles();
-
 app.UseRouting();
+
+app.MapGet("/api/sample", () => new List<string> { "Value 1", "Value 2" });
+app.MapPost("/api/sample", (string data) => {
+    Console.WriteLine("Received data: " + data);
+    return Results.Ok();
+});
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 
-app.Run();
+app.Run(); 

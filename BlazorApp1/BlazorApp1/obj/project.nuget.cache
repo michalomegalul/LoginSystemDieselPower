@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "iW9Gg9Cs8sCAXFDtXPMsSNftK/VYJFFgYFZWp32aBjAEc3MmpTA6D3332mnQGb42srkvArrS6FttMZvYrQebog==",
+  "dgSpecHash": "lOkdQ/2PiGTOah42B4K3zDYwwtA4D420Lbmz8nYHMgGWbWPhyTCf6qszZdIbVfGdY2pNGKf8FBC2KOqZaZnqbQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\interns.prague\\source\\repos\\BlazorApp1\\BlazorApp1\\BlazorApp1.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\dog56\\source\\repos\\LoginSystemDieselPower\\BlazorApp1\\BlazorApp1\\BlazorApp1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\dog56\\.nuget\\packages\\system.codedom\\7.0.0\\system.codedom.7.0.0.nupkg.sha512",
+    "C:\\Users\\dog56\\.nuget\\packages\\system.management\\7.0.1\\system.management.7.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,0 +1,28 @@
+﻿@page "/SubscriptionKey"
+@using BlazorApp1.Webside
+@inject IJSRuntime JSRuntime
+<link href="css/app.css" rel="stylesheet" />
+<PageTitle>Key Generation</PageTitle>
+<h1>Key Generation</h1>
+@if (_subscriptionKey == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <p>@_subscriptionKey</p>
+    <button class="button" @onclick="CopyToClipboard">Copy to Clipboard</button>
+}
+@code {
+    private string _subscriptionKey;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _subscriptionKey = SubscriptionKey.GenerateKey();
+    }
+
+    private async Task CopyToClipboard()
+    {
+        await JSRuntime.InvokeAsync<object>("navigator.clipboard.writeText", new object[] { _subscriptionKey });
+    }
+}

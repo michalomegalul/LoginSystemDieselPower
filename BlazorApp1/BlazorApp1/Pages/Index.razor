@@ -1,9 +1,58 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+<link href="css/app.css" rel="stylesheet" />
+<table class="accountTable" id="accountTable">
+    <thead>
+        <tr>
+            <th>Pc Name</th>
+            <th>State of Share</th>
+            <th>Time added</th>
+            <th>Time left</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var row in _rows)
+        {
+            <tr>
+                <td>@row.PcName</td>
+                <td>@row.ShareState</td>
+                <td>@row.TimeAdded</td>
+                <td>@row.TimeLeft</td>
+                <td>
+                    <button class="button" @onclick="(() => DeleteRow(row))">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 
-<h1>Hello, world!</h1>
+<button class="button" @onclick="AddSampleRow">Add Sample Row</button>
 
-Welcome to your new app.
+@code {
+    private List<TableRow> _rows = new List<TableRow>();
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+    private void AddSampleRow()
+    {
+        _rows.Add(new TableRow
+            {
+                PcName = Userside.UserManagment.GetPCName(),
+                ShareState = "Authorized",
+                TimeAdded = DateTime.Now.ToString(),
+                TimeLeft = DateTime.Now.AddMinutes(30).ToString()
+            });
+    }
+
+    private void DeleteRow(TableRow row)
+    {
+        _rows.Remove(row);
+    }
+
+    public class TableRow
+    {
+        public string PcName { get; set; } 
+        public string ShareState { get; set; } 
+        public string TimeAdded { get; set; }
+        public string TimeLeft { get; set; }
+    }
+}
